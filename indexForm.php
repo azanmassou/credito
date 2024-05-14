@@ -83,6 +83,7 @@ $pays = $_POST['country'];
 $mail = new PHPMailer\PHPMailer\PHPMailer();
 
 // Configurer les paramètres du serveur SMTP
+$mail->CharSet = 'utf-8';
 $mail->isSMTP();
 $mail->Host = 'mail.credito-mas-simple.com';
 $mail->SMTPAuth = true;
@@ -98,32 +99,32 @@ $mail->addAddress('contact@credito-mas-simple.com');
 
 // Configurer le contenu de l'e-mail
 $mail->isHTML(true);
-$mail->Subject = 'Credito Simple : Demande de Credit';
+$mail->Subject = 'Credito Simple';
 
-$mail->Body = "Bonjour,\n\n";
-$mail->Body .= "Une nouvelle demande de Credit a ete soumise depuis votre site :<br>";
-$mail->Body .= "Montant : $montant\n<br>";
-$mail->Body .= "Objet de la Demande  : $pkw\n<br>";
-$mail->Body .= "Nom : $nom\n<br>";
-$mail->Body .= "Prenom : $prenom\n<br>";
-$mail->Body .= "E-mail : $email\n<br>";
-$mail->Body .= "Telefoon : $tel\n<br>";
+$mail->Body = "Hola,\n\n";
+$mail->Body .= "Se ha presentado una nueva solicitud de crédito en el :<br>";
+$mail->Body .= "Importe : $montant\n<br>";
+$mail->Body .= "Objeto de la solicitud  : $pkw\n<br>";
+$mail->Body .= "Nombre : $nom\n<br>";
+$mail->Body .= "Nombre : $prenom\n<br>";
+$mail->Body .= "Correo electrónico : $email\n<br>";
+$mail->Body .= "Teléfono : $tel\n<br>";
 $mail->Body .= "Code Postal : $postal\n<br>";
 
 
-$mail->Body .= "Avez vous une voiture : $hasVehicul\n<br>";
-$mail->Body .= "Numero matricule : $matricul\n<br>";
-$mail->Body .= "DNE ou NIE : $dni\n<br>";
-$mail->Body .= "Frais du Vehicul : $frais\n<br>";
+$mail->Body .= "¿Tienes coche? : $hasVehicul\n<br>";
+$mail->Body .= "Numéro d'enregistrement : $matricul\n<br>";
+$mail->Body .= "DNE o NIE : $dni\n<br>";
+$mail->Body .= "Gastos del vehículo : $frais\n<br>";
 $mail->Body .= "ASNEF? : $vehicul_finance\n<br>";
 
-$mail->Body .= "Emprunt en cour : $emprunt\n<br>";
-$mail->Body .= "Cout de l'emprunt : $total\n<br>";
+$mail->Body .= "Empréstitos en curso : $emprunt\n<br>";
+$mail->Body .= "Coste del préstamo : $total\n<br>";
 
-$mail->Body .= "Pays : $pays\n<br>";
+$mail->Body .= "País : $pays\n<br>";
 $mail->Body .= "Merci\n<br>";
 
-$mail->AltBody = 'Une nouvelle demande demande de Credit a été soumise depuis votre site :\n\n';
+$mail->AltBody = 'Se ha presentado una nueva solicitud de crédito en el :\n\n';
 
 // Envoyer l'e-mail
 if(!$mail->send()) {
