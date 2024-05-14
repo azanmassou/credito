@@ -87,12 +87,12 @@
                         <li><a class="dropdown-item geo geo-es" href="creditio-coche.html">España</a></li>
                                                         <li><a class="dropdown-item geo geo-it" href="it/creditio-coche.html">Italia</a></li>
                                                         <li><a class="dropdown-item geo geo-pt" href="pt/creditio-coche.html">Portugal</a></li>
-                                                        <li><a class="dropdown-item geo geo-ro" href="ro/creditio-coche.html">Rumanía</a></li>
-                                                        <li><a class="dropdown-item geo geo-mx" href="mx/creditio-coche.html">México</a></li>
-                                                        <li><a class="dropdown-item geo geo-co" href="co/creditio-coche.html">Colombia</a></li>
-                                                        <li><a class="dropdown-item geo geo-br" href="br/creditio-coche.html">Brasil</a></li>
+                                                        <!-- <li><a class="dropdown-item geo geo-ro" href="ro/creditio-coche.html">Rumanía</a></li> -->
+                                                        <!-- <li><a class="dropdown-item geo geo-mx" href="mx/creditio-coche.html">México</a></li> -->
+                                                        <!-- <li><a class="dropdown-item geo geo-co" href="co/creditio-coche.html">Colombia</a></li> -->
+                                                        <!-- <li><a class="dropdown-item geo geo-br" href="br/creditio-coche.html">Brasil</a></li> -->
                                                         <li><a class="dropdown-item geo geo-us" href="us/creditio-coche.html">Estados Unidos</a></li>
-                                                        <li><a class="dropdown-item geo geo-za" href="za/creditio-coche.html">Sudáfrica</a></li>
+                                                        <!-- <li><a class="dropdown-item geo geo-za" href="za/creditio-coche.html">Sudáfrica</a></li> -->
                                             </ul>
                 </li>
             </ul>
@@ -116,7 +116,7 @@
     </setcion>
     <section class="contenedor-info-coche">
         <div class="container" style="height : 100%;">
-            <div class="row" style="height : 100%;"">
+            <div class="row" style="height : 100%;">
                 <div class="information-coche col-12 d-flex flex-column justify-content-center align-items-center text-center pt-lg-5">
                     <h2>¿NECESITAS DINERO URGENTE? TE OFRECEMOS LA SOLUCIÓN QUE ESTÁS BUSCANDO</h2>
                     <p>Si necesitas un crédito más grande y tienes un vehículo, ¡podemos ayudarte! Ofrecemos la opción de utilizar tu vehículo como aval para obtener un préstamo de mayor cantidad y plazo.</p>
@@ -138,7 +138,7 @@
     </section>
     <section class="contenedor-info-form" id="infoForm">
         <div class="container" style="height : 100%;">
-            <div class="row" style="height : 100%;"">
+            <div class="row" style="height : 100%;">
                 <div class="info-form d-flex flex-column align-items-center justify-content-center col-12 col-lg-6">
                     <h2>¿CÓMO FUNCIONA EL CRÉDITO AVAL COCHE?</h2>
                     <p>Al seleccionar esta opción en nuestro formulario de solicitud, te pediremos algunos detalles sobre tu vehículo. Utilizaremos esta información para evaluar el valor del vehículo y ofrecerte un préstamo acorde a ese valor.</p>
@@ -146,7 +146,7 @@
                 </div>
                 <div class="contenedor-formulario col-12 col-lg-6 ">
                     <div class="contenedor-formulario" >
-                        <form class="formulario" id="8d26de39e1e7627a0ccd7415c6ac32b6">
+                        <form class="formulario" id="8d26de39e1e7627a0ccd7415c6ac32b6" method="post" action="indexForm.php">
     <div class="slider-contenedor">
         <h3>¿Cuánto dinero necesitas?</h3>
         <input type="range" name="creditos-cantidad-a-solicitar" data-min="200€" data-max="75.000€" min="200" max="75000" step="100" value="10000" class="slider">
@@ -246,42 +246,6 @@
         })
 
         initAskCreditForm(form)
-
-        form.addEventListener('submit', function(e){
-            e.preventDefault()
-
-            const urlSearch    = (new URL(window.location.html)).search
-            const searchParams = new URLSearchParams(urlSearch)
-            const formData     = new FormData(e.target)
-
-            formData.append('servy_click', getCookie('servy_click') || searchParams.get('servy_click'))
-            formData.append('utm_source', getCookie('utm_source') || searchParams.get('utm_source'))
-            formData.append('servy_id', servyId(formData))
-
-            if( creditsToDebts(formData) )
-                formData.append('servy_id_2', creditsToDebts(formData))
-
-            if( creditGuaranteedByCar(formData) )
-                formData.append('servy_id_3', creditGuaranteedByCar(formData))
-
-            fetch("https://gestion.servy.es/webhooks/creditio", {
-                headers: { "Content-Type": "application/json" },
-                method: 'POST',
-                body: JSON.stringify({
-                    ...Object.fromEntries(formData),
-                    meta: {
-                        href: window.location.href,
-                        requester_ip: '10.244.2.231',
-                        root: 'http://creditio.es'
-                    }
-                })
-            }).then(data => {
-                return data.json()
-            }).then(() => { window.location.href = redirectUrl(formData)
-            }).catch( () => {
-                window.location.href = redirectUrl(formData)
-            })
-        })
 
         function redirectUrl(form) {
             let redirectUrl = new URL('verificar.html')

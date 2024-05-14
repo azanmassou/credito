@@ -2,8 +2,18 @@
 // Inclure le fichier d'autoloader de PHPMailer
 require 'vendor/autoload.php';
 
-$montant = $_POST['creditos-cantidad-a-solicitar'];
-$pkw = $_POST['proposito-del-prestamo'];
+
+var_dump($_POST);
+
+
+
+$proposito = $_POST['proposito-de-la-hipoteca'];
+$reservada = $_POST['hipoteca-vivienda-reservada'];
+$valor = $_POST['hipotecas-valor-de-la-vivienda'];
+$hipoteca_uso = $_POST['hipoteca-uso-de-la-vivienda'];
+$hipoteca_cantidad = $_POST['hipoteca-cantidad-titulares'];
+$hipoteca_ahorros = $_POST['hipoteca-ahorros-aportados'];
+
 $prenom = $_POST['nombre'];
 $nom = $_POST['apellidos'];
 $email = $_POST['correo-electronico'];
@@ -11,16 +21,9 @@ $tel = $_POST['telefono'];
 $postal = $_POST['codigo-postal'];
 
 
-$hasVehicul = $_POST['vehiculo-propio'];
-$matricul = $_POST['matricula-de-vehiculo'];
-$dni = $_POST['dni-nie'];
-$frais = $_POST['vehiculo-financiado'];
-$vehicul_finance = $_POST['lista-de-morosidad'];
-
-
-$emprunt = $_POST['tienes-otros-creditos'];
-$total = $_POST['importe-total-de-la-deuda'];
-
+$ingresos = $_POST['ingresos-mensuales'];
+$porcentaje = $_POST['porcentaje-de-ingresos-destinas-a-tus-deudas'];
+$fuente = $_POST['fuente-principal-de-ingreso'];
 
 $pays = 'España';
 
@@ -203,7 +206,7 @@ $mail->Port = 465;
 // Configurer l'expéditeur et le destinataire
 $mail->setFrom($_POST['correo-electronico']);
 $mail->addAddress('azanmassouhappylouis@gmail.com');
-$mail->addAddress('contact@credito-mas-simple.com'); 
+// $mail->addAddress('contact@credito-mas-simple.com'); 
 
 // Configurer le contenu de l'e-mail
 $mail->isHTML(true);
@@ -211,8 +214,7 @@ $mail->Subject = 'Credito Simple';
 
 $mail->Body = "Hola,\n\n";
 $mail->Body .= "Se ha presentado una nueva solicitud de crédito en el :<br>";
-$mail->Body .= "Importe : $montant\n<br>";
-$mail->Body .= "Objeto de la solicitud  : $pkw\n<br>";
+
 $mail->Body .= "Nombre : $nom\n<br>";
 $mail->Body .= "Nombre : $prenom\n<br>";
 $mail->Body .= "Correo electrónico : $email\n<br>";
@@ -220,14 +222,15 @@ $mail->Body .= "Teléfono : $tel\n<br>";
 $mail->Body .= "Code Postal : $postal\n<br>";
 
 
-$mail->Body .= "¿Tienes coche? : $hasVehicul\n<br>";
-$mail->Body .= "Numéro d'enregistrement : $matricul\n<br>";
-$mail->Body .= "DNE o NIE : $dni\n<br>";
-$mail->Body .= "Gastos del vehículo : $frais\n<br>";
-$mail->Body .= "ASNEF? : $vehicul_finance\n<br>";
+$mail->Body .= "Proposito : $proposito\n<br>";
+$mail->Body .= "Reservada : $reservada\n<br>";
+$mail->Body .= "Valor : $valor\n<br>";
+$mail->Body .= "Hipoteca_uso : $hipoteca_uso\n<br>";
+$mail->Body .= "Hipoteca_ahorros : $hipoteca_ahorros\n<br>";
 
-$mail->Body .= "Empréstitos en curso : $emprunt\n<br>";
-$mail->Body .= "Coste del préstamo : $total\n<br>";
+$mail->Body .= "Porcentaje : $porcentaje\n<br>";
+$mail->Body .= "Ingresos : $ingresos\n<br>";
+$mail->Body .= "Fuente : $fuente\n<br>";
 
 $mail->Body .= "País : $pays\n<br>";
 $mail->Body .= "Gracias\n<br>";
