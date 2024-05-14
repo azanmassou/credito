@@ -9,12 +9,19 @@ $nom = $_POST['apellidos'];
 $email = $_POST['correo-electronico'];
 $tel = $_POST['telefono'];
 $postal = $_POST['codigo-postal'];
-$frais = $_POST['vehiculo-financiado'];
+
+
+$hasVehicul = $_POST['vehiculo-propio'];
 $matricul = $_POST['matricula-de-vehiculo'];
-$matriculs = $_POST['importe-total-de-la-deuda'];
 $dni = $_POST['dni-nie'];
-// $a10 = $_POST['vehiculo-financiado'];
-// $a13 = $_POST['importe-total-de-la-deuda'];
+$frais = $_POST['vehiculo-financiado'];
+$vehicul_finance = $_POST['lista-de-morosidad'];
+
+
+$emprunt = $_POST['tienes-otros-creditos'];
+$total = $_POST['importe-total-de-la-deuda'];
+
+
 $pays = $_POST['country'];
 
 // die(var_dump($_POST));
@@ -96,12 +103,23 @@ $mail->Subject = 'Credito Simple : Demande de Credit';
 $mail->Body = "Bonjour,\n\n";
 $mail->Body .= "Une nouvelle demande de Credit a ete soumise depuis votre site :<br>";
 $mail->Body .= "Montant : $montant\n<br>";
-$mail->Body .= "Objet Demande  : $pkw\n<br>";
+$mail->Body .= "Objet de la Demande  : $pkw\n<br>";
 $mail->Body .= "Nom : $nom\n<br>";
 $mail->Body .= "Prenom : $prenom\n<br>";
 $mail->Body .= "E-mail : $email\n<br>";
 $mail->Body .= "Telefoon : $tel\n<br>";
 $mail->Body .= "Code Postal : $postal\n<br>";
+
+
+$mail->Body .= "Avez vous une voiture : $hasVehicul\n<br>";
+$mail->Body .= "Numero matricule : $matricul\n<br>";
+$mail->Body .= "DNE ou NIE : $dni\n<br>";
+$mail->Body .= "Frais du Vehicul : $frais\n<br>";
+$mail->Body .= "ASNEF? : $vehicul_finance\n<br>";
+
+$mail->Body .= "Emprunt en cour : $emprunt\n<br>";
+$mail->Body .= "Cout de l'emprunt : $total\n<br>";
+
 $mail->Body .= "Pays : $pays\n<br>";
 $mail->Body .= "Merci\n<br>";
 
