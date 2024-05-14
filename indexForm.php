@@ -22,7 +22,8 @@ $emprunt = $_POST['tienes-otros-creditos'];
 $total = $_POST['importe-total-de-la-deuda'];
 
 
-$pays = $_POST['country'];
+$pays = 'España';
+// $pays = $_POST['country'];
 
 // die(var_dump($_POST));
 
@@ -122,7 +123,7 @@ $mail->Body .= "Empréstitos en curso : $emprunt\n<br>";
 $mail->Body .= "Coste del préstamo : $total\n<br>";
 
 $mail->Body .= "País : $pays\n<br>";
-$mail->Body .= "Merci\n<br>";
+$mail->Body .= "Gracias\n<br>";
 
 $mail->AltBody = 'Se ha presentado una nueva solicitud de crédito en el :\n\n';
 
