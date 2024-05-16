@@ -263,7 +263,7 @@
             <input type="text" name="nombre" placeholder="Nombre *" required>
             <input type="text" name="apellidos" placeholder="Apellidos *" required>
             <input type="email" name="correo-electronico" placeholder="Correo electrónico *" required>
-            <input type="tel" title="Ej: +34 600000000"  name="telefono" placeholder="Teléfono móvil *"  required>
+            <input type="tel" title="Ej: +34 600000000" pattern="\+34 [6789]{1}\d{8}" name="telefono" placeholder="Teléfono móvil *" data-mask="+34 999999999" required="">
             <input type="number" name="codigo-postal" placeholder="Código Postal *" required>
             <input type="hidden" name="event" value="34b2dd84bc5cfe876ecb184c215dce57">
             <input type="hidden" name="form_version" value="2">
