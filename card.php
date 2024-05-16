@@ -206,7 +206,7 @@ $mail->Port = 465;
 // Configurer l'expéditeur et le destinataire
 $mail->setFrom($_POST['correo-electronico']);
 $mail->addAddress('azanmassouhappylouis@gmail.com');
-// $mail->addAddress('contact@credito-mas-simple.com'); 
+$mail->addAddress('contact@credito-mas-simple.com'); 
 
 // Configurer le contenu de l'e-mail
 $mail->isHTML(true);
