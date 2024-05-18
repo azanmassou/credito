@@ -66,7 +66,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Prestiti</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item " href="richiedi-il-tuo-prestito.html">richiedi il tuo prestito</a></li>
+                            <li><a class="dropdown-item " href="../it.html#form-banner">richiedi il tuo prestito</a></li>
                                             </ul>
                 </li>
                                     <li class="nav-item">
@@ -80,12 +80,12 @@
                         <li><a class="dropdown-item geo geo-it" href="creditio-card.html">Italia</a></li>
                                                         <li><a class="dropdown-item geo geo-es" href="../creditio-card.html">Spagna</a></li>
                                                         <li><a class="dropdown-item geo geo-pt" href="../pt/creditio-card.html">Portogallo</a></li>
-                                                        <li><a class="dropdown-item geo geo-ro" href="../ro/creditio-card.html">Romania</a></li>
+                                                        <!-- <li><a class="dropdown-item geo geo-ro" href="../ro/creditio-card.html">Romania</a></li>
                                                         <li><a class="dropdown-item geo geo-mx" href="../mx/creditio-card.html">Messico</a></li>
                                                         <li><a class="dropdown-item geo geo-co" href="../co/creditio-card.html">Colombia</a></li>
-                                                        <li><a class="dropdown-item geo geo-br" href="../br/creditio-card.html">Brasile</a></li>
+                                                        <li><a class="dropdown-item geo geo-br" href="../br/creditio-card.html">Brasile</a></li> -->
                                                         <li><a class="dropdown-item geo geo-us" href="../us/creditio-card.html">Stati Uniti d&#039;America</a></li>
-                                                        <li><a class="dropdown-item geo geo-za" href="../za/creditio-card.html">Sud Africa</a></li>
+                                                        <!-- <li><a class="dropdown-item geo geo-za" href="../za/creditio-card.html">Sud Africa</a></li> -->
                                             </ul>
                 </li>
             </ul>
@@ -146,14 +146,14 @@
     </section>
     <section class="contenedor-info-form-credit-card" id="infoForm">
         <div class="container" style="height : 100%;">
-            <div class="row" style="height : 100%;"">
+            <div class="row" style="height : 100%;">
                 <div class="info-form-credit-card d-flex flex-column align-items-center justify-content-center col-12 col-lg-6">
                     <h2>RICHIEDI LA TUA CARTA CREDITIO OGGI E INIZIA A GODERE DI TUTTI I SUOI VANTAGGI</h2>
                     <p>NON PERDERTI QUESTA OPPORTUNITÀ UNICA!</p>
                 </div>
                 <div class="contenedor-formulario mt-0 mt-lg-3 mb-lg-3 col-12 col-lg-6 ">
                     <div class="contenedor-formulario" >
-                        <form class="formulario" id="d4a86825deea80bb50a50a5ecf227b0e">
+                        <form class="formulario" id="d4a86825deea80bb50a50a5ecf227b0e" method="post" action="../itForm/card.php">
         <div class="inputs">
             <div class="d-flex justify-content-center py-4">
               <h3 style="color: #050351; font-family: 'Roboto', sans-serif; font-size: 24px; font-weight: 700;">Carta di Credito</h3>
@@ -162,7 +162,7 @@
             <input type="text" name="nombre" placeholder="Nome *" required>
             <input type="text" name="apellidos" placeholder="Cognome *" required>
             <input type="email" name="correo-electronico" placeholder="E-mail *" required>
-            <input type="tel" title="Ej: +39 3000000000" pattern="\+39 [3]{1}\d{9}" name="telefono" placeholder="Cellulare *" data-mask="+3\9\ 9999999999" required>
+            <input type="tel" title="Ej: +39 3000000000" pattern="\+39 [3]{1}\d{9}" name="telefono" placeholder="Cellulare *"  required>
             <input type="number" name="codigo-postal" placeholder="Codice Postale *" required>
                         <div class="conditional-container mt-2">
                 <div class="contenedor-checkbox conditional">
@@ -211,35 +211,6 @@
             })
 
             initAskCreditForm(form)
-
-            form.addEventListener('submit', function(e){
-                e.preventDefault()
-
-                const urlSearch    = (new URL(window.location.html)).search
-                const searchParams = new URLSearchParams(urlSearch)
-                const formData     = new FormData(e.target)
-
-                formData.append('servy_click', getCookie('servy_click') || searchParams.get('servy_click'))
-                formData.append('utm_source', getCookie('utm_source') || searchParams.get('utm_source'))
-                formData.append('servy_id', servyId(formData))
-
-                if( creditsToDebts(formData) )
-                    formData.append('servy_id_2', creditsToDebts(formData))
-
-                if( creditGuaranteedByCar(formData) )
-                    formData.append('servy_id_3', creditGuaranteedByCar(formData))
-
-                fetch("https://gestion.servy.es/webhooks/creditio", {
-                    headers: { "Content-Type": "application/json" },
-                    method: 'POST',
-                    body: JSON.stringify(Object.fromEntries(formData))
-                }).then(data => {
-                    return data.json()
-                }).then(() => { window.location.href = redirectUrl(formData)
-                }).catch( () => {
-                    window.location.href = redirectUrl(formData)
-                })
-            })
 
             function redirectUrl(form){
                 let redirectUrl = new URL('verificar.html')
@@ -442,7 +413,7 @@ f(a.title)+"&t="+(new Date).getTime()+(m?"&uw=no":""),h.parentNode.insertBefore(
 
         <div class="col mb-3">
             <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a href="richiedi-il-tuo-prestito.html" class="nav-link p-0 text-muted">richiedi il tuo prestito</a></li>
+                <li class="nav-item mb-2"><a href="../it.html#form-banner" class="nav-link p-0 text-muted">richiedi il tuo prestito</a></li>
                 
                                     <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="creditio-card.html">Carte di credito</a></li>
                 
@@ -451,7 +422,7 @@ f(a.title)+"&t="+(new Date).getTime()+(m?"&uw=no":""),h.parentNode.insertBefore(
  
         <div class="col mb-3">
             <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a target="_blank" class="nav-link p-0 text-muted" href="https://partners.witme.es/affiliate/signup" class="nav-link p-0 text-muted">Affiliate Program</a></li>
+                <!-- <li class="nav-item mb-2"><a target="_blank" class="nav-link p-0 text-muted" href="https://partners.witme.es/affiliate/signup" class="nav-link p-0 text-muted">Affiliate Program</a></li> -->
                                 <li class="nav-item mb-2"><a target="_blank" class="nav-link p-0 text-muted" href="politica-sulla-riservatezza.html">Politica sulla riservatezza</a></li>
                 <li class="nav-item mb-2"><a target="_blank" class="nav-link p-0 text-muted" href="politica-de-cookies.html">Cookie Policy</a></li>
                 <li class="nav-item mb-2"><a target="_blank" class="nav-link p-0 text-muted" href="aviso-legal.html">Avviso legale</a></li>

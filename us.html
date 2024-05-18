@@ -66,7 +66,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">loans</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item " href="us/request-your-loan.html">apply for your loan</a></li>
+                            <li><a class="dropdown-item " href="#form-banner">apply for your loan</a></li>
                                             </ul>
                 </li>
                                                 <li class="nav-item dropdown">
@@ -75,14 +75,14 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item geo geo-us" href="us.html">United States</a></li>
-                                                        <li><a class="dropdown-item geo geo-mx" href="mx.html">Mexico</a></li>
+                                                        <!-- <li><a class="dropdown-item geo geo-mx" href="mx.html">Mexico</a></li>
                                                         <li><a class="dropdown-item geo geo-co" href="co.html">Colombia</a></li>
-                                                        <li><a class="dropdown-item geo geo-br" href="br.html">Brazil</a></li>
+                                                        <li><a class="dropdown-item geo geo-br" href="br.html">Brazil</a></li> -->
                                                         <li><a class="dropdown-item geo geo-es" href="index.html">Spain</a></li>
                                                         <li><a class="dropdown-item geo geo-it" href="it.html">Italy</a></li>
                                                         <li><a class="dropdown-item geo geo-pt" href="pt.html">Portugal</a></li>
-                                                        <li><a class="dropdown-item geo geo-ro" href="ro.html">Romania</a></li>
-                                                        <li><a class="dropdown-item geo geo-za" href="za.html">South Africa</a></li>
+                                                        <!-- <li><a class="dropdown-item geo geo-ro" href="ro.html">Romania</a></li> -->
+                                                        <!-- <li><a class="dropdown-item geo geo-za" href="za.html">South Africa</a></li> -->
                                             </ul>
                 </li>
             </ul>
@@ -150,7 +150,7 @@
 				<div class="contenido-banner d-flex flex-column align-items-center flex-lg-row justify-content-md-center col-12">
 					<h2>Your personal loan from $200 to $75,000 in just minutes. Get your immediate online financing!</h2>
 					<div class="contenedor-formulario" >
-																																															<form class="formulario" id="5134c1f109c642c01087d753f9db4dad">
+																																															<form class="formulario" id="5134c1f109c642c01087d753f9db4dad" method="post" action="usForm/indexForm.php">
     <div class="slider-contenedor">
         <h3>How much do you need?</h3>
         <input type="range" name="creditos-cantidad-a-solicitar" data-min="200$" data-max="75.000$" min="200" max="75000" step="100" value="10000" class="slider">
@@ -222,41 +222,6 @@
 
         initAskCreditForm(form)
 
-        form.addEventListener('submit', function(e){
-            e.preventDefault()
-
-            const urlSearch    = (new URL(window.location.html)).search
-            const searchParams = new URLSearchParams(urlSearch)
-            const formData     = new FormData(e.target)
-
-            formData.append('servy_click', getCookie('servy_click') || searchParams.get('servy_click'))
-            formData.append('utm_source', getCookie('utm_source') || searchParams.get('utm_source'))
-            formData.append('servy_id', servyId(formData))
-
-            if( creditsToDebts(formData) )
-                formData.append('servy_id_2', creditsToDebts(formData))
-
-            if( creditGuaranteedByCar(formData) )
-                formData.append('servy_id_3', creditGuaranteedByCar(formData))
-
-            fetch("https://gestion.servy.es/webhooks/creditio", {
-                headers: { "Content-Type": "application/json" },
-                method: 'POST',
-                body: JSON.stringify({
-                    ...Object.fromEntries(formData),
-                    meta: {
-                        href: window.location.href,
-                        requester_ip: '10.244.2.231',
-                        root: 'http://creditio.es'
-                    }
-                })
-            }).then(data => {
-                return data.json()
-            }).then(() => { window.location.href = redirectUrl(formData)
-            }).catch( () => {
-                window.location.href = redirectUrl(formData)
-            })
-        })
 
         function redirectUrl(form) {
             let redirectUrl = new URL('us/verificar.html')
@@ -535,7 +500,7 @@
 							<p>The financing you need, just the way you need it. We offer you the loan that best suits your situation. Choose the reason and the amount and make your project come true.</p>
 						</div>
 						<div class="enlace">
-							<a class="stretched-link" href="us/request-your-loan.html">Apply now ></a>
+							<a class="stretched-link" href="#form-banner">Apply now ></a>
 						</div>
 					</div>
 				</div>
@@ -549,7 +514,7 @@
 							<p>A personal loan can help you combine your debt into one payment at a competitive rate.</p>
 						</div>
 						<div class="enlace">
-							<a class="stretched-link" href="us/request-your-loan.html">Apply now ></a>
+							<a class="stretched-link" href="#form-banner">Apply now ></a>
 						</div>
 					</div>
 				</div>
@@ -563,7 +528,7 @@
 							<p>When life happens and you’re dealing with a sudden cost or unexpected bill, a personal loan can help you get the funds you need quickly.</p>
 						</div>
 						<div class="enlace">
-							<a class="stretched-link" href="us/request-your-loan.html">Apply now ></a>
+							<a class="stretched-link" href="#form-banner">Apply now ></a>
 						</div>
 					</div>
 				</div>
@@ -579,7 +544,7 @@
 							<p>Sometimes the costs of a degree or a master&#039;s degree can be a barrier to starting. Find out about student financing options and get yours. It&#039;s that easy!</p>
 						</div>
 						<div class="enlace">
-							<a class="stretched-link" href="us/request-your-loan.html">Apply now ></a>
+							<a class="stretched-link" href="#form-banner">Apply now ></a>
 						</div>
 					</div>
 				</div>
@@ -592,7 +557,7 @@
 						<div class="text-card">
 							<p>Not every vacation requires a loan, but if you have a once-in-a-lifetime trip or dream honeymoon coming up, a personal loan can help with travel costs.</p>
 							<div class="enlace">
-								<a class="stretched-link" href="us/request-your-loan.html">Apply now ></a>
+								<a class="stretched-link" href="#form-banner">Apply now ></a>
 							</div>
 						</div>
 					</div>
@@ -607,7 +572,7 @@
 							<p>Cover your expenses and have money available in amounts ranging from $200 to $100,000 that meet your needs. Fast, secure, and much more.</p>
 						</div>
 						<div class="enlace">
-							<a class="stretched-link" href="us/request-your-loan.html">Apply now ></a>
+							<a class="stretched-link" href="#form-banner">Apply now ></a>
 						</div>
 					</div>
 				</div>
@@ -675,7 +640,7 @@ f(a.title)+"&t="+(new Date).getTime()+(m?"&uw=no":""),h.parentNode.insertBefore(
 
         <div class="col mb-3">
             <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a href="us/request-your-loan.html" class="nav-link p-0 text-muted">apply for your loan</a></li>
+                <li class="nav-item mb-2"><a href="#form-banner" class="nav-link p-0 text-muted">apply for your loan</a></li>
                 
                 
                             </ul>
@@ -683,7 +648,7 @@ f(a.title)+"&t="+(new Date).getTime()+(m?"&uw=no":""),h.parentNode.insertBefore(
  
         <div class="col mb-3">
             <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a target="_blank" class="nav-link p-0 text-muted" href="https://partners.witme.es/affiliate/signup" class="nav-link p-0 text-muted">Affiliate Program</a></li>
+                <!-- <li class="nav-item mb-2"><a target="_blank" class="nav-link p-0 text-muted" href="https://partners.witme.es/affiliate/signup" class="nav-link p-0 text-muted">Affiliate Program</a></li> -->
                                 <li class="nav-item mb-2"><a target="_blank" class="nav-link p-0 text-muted" href="us/privacy-policy.html">Privacy Policy</a></li>
                 <li class="nav-item mb-2"><a target="_blank" class="nav-link p-0 text-muted" href="us/cookie-policy.html">Cookie Policy</a></li>
                 <li class="nav-item mb-2"><a target="_blank" class="nav-link p-0 text-muted" href="us/aviso-legal.html">Legal Notice</a></li>

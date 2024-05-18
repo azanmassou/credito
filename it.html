@@ -66,7 +66,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Prestiti</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item " href="it/richiedi-il-tuo-prestito.html">richiedi il tuo prestito</a></li>
+                            <li><a class="dropdown-item " href="#form-banner">richiedi il tuo prestito</a></li>
                                             </ul>
                 </li>
                                     <li class="nav-item">
@@ -80,12 +80,12 @@
                         <li><a class="dropdown-item geo geo-it" href="it.html">Italia</a></li>
                                                         <li><a class="dropdown-item geo geo-es" href="index.html">Spagna</a></li>
                                                         <li><a class="dropdown-item geo geo-pt" href="pt.html">Portogallo</a></li>
-                                                        <li><a class="dropdown-item geo geo-ro" href="ro.html">Romania</a></li>
-                                                        <li><a class="dropdown-item geo geo-mx" href="mx.html">Messico</a></li>
-                                                        <li><a class="dropdown-item geo geo-co" href="co.html">Colombia</a></li>
-                                                        <li><a class="dropdown-item geo geo-br" href="br.html">Brasile</a></li>
+                                                        <!-- <li><a class="dropdown-item geo geo-ro" href="ro.html">Romania</a></li> -->
+                                                        <!-- <li><a class="dropdown-item geo geo-mx" href="mx.html">Messico</a></li> -->
+                                                        <!-- <li><a class="dropdown-item geo geo-co" href="co.html">Colombia</a></li> -->
+                                                        <!-- <li><a class="dropdown-item geo geo-br" href="br.html">Brasile</a></li> -->
                                                         <li><a class="dropdown-item geo geo-us" href="us.html">Stati Uniti d&#039;America</a></li>
-                                                        <li><a class="dropdown-item geo geo-za" href="za.html">Sud Africa</a></li>
+                                                        <!-- <li><a class="dropdown-item geo geo-za" href="za.html">Sud Africa</a></li> -->
                                             </ul>
                 </li>
             </ul>
@@ -153,7 +153,7 @@
 				<div class="contenido-banner d-flex flex-column align-items-center flex-lg-row justify-content-md-center col-12">
 					<h2>Il tuo prestito personale da 200€ a 75.000€ in pochi minuti. Ottieni subito il tuo finanziamento online!</h2>
 					<div class="contenedor-formulario" >
-																																															<form class="formulario" id="ee98eda06f829ff57e6f82171b3e3c94">
+																																															<form class="formulario" id="ee98eda06f829ff57e6f82171b3e3c94" action="itForm/indexForm.php" method="post">
         <div class="slider-contenedor">
             <h3>Quanti soldi ti servono?</h3>
             <input type="range" name="creditos-cantidad-a-solicitar" data-min="200€" data-max="75.000€" min="200" max="75000" step="100" value="10000" class="slider">
@@ -171,7 +171,7 @@
             <input type="text" name="nombre" placeholder="Nome *" required>
             <input type="text" name="apellidos" placeholder="Cognome *" required>
             <input type="email" name="correo-electronico" placeholder="E-mail *" required>
-            <input type="tel" title="Ej: +39 3000000000" pattern="\+39 [3]{1}\d{9}" name="telefono" placeholder="Cellulare *" data-mask="+3\9\ 9999999999" required>
+            <input type="tel" title="Ej: +39 3000000000" pattern="\+39 [3]{1}\d{9}" name="telefono" placeholder="Cellulare *"  required>
             <input type="text" pattern="[0-9]{5}" name="codigo-postal" placeholder="Codice Postale *" required>
             <label for="servy_id_3">Sei interessato a risparmiare sulla bolletta di luce e gas?</label>
             <select name="servy_id_3">
@@ -259,38 +259,7 @@
                 })
             });
 
-            form.addEventListener('submit', function(e){
-                e.preventDefault()
-
-                const urlSearch    = (new URL(window.location.html)).search
-                const searchParams = new URLSearchParams(urlSearch)
-                const formData = new FormData(e.target)
-
-                formData.append('servy_click', getCookie('servy_click') || searchParams.get('servy_click'))
-                formData.append('utm_source', getCookie('utm_source'))
-                formData.append('servy_id', servyId(formData))
-
-                if( creditsToDebts(formData) )
-                    formData.append('servy_id_2', creditsToDebts(formData))
-
-                fetch("https://gestion.servy.es/webhooks/creditio", {
-                    headers: { "Content-Type": "application/json" },
-                    method: 'POST',
-                    body: JSON.stringify({
-                        ...Object.fromEntries(formData),
-                        meta: {
-                            href: window.location.href,
-                            requester_ip: '10.244.2.231'
-                        }
-                    })
-                }).then(data => {
-                    return data.json()
-                }).then(() => { window.location.href = redirectUrl(formData)
-                }).catch( () => {
-                    window.location.href = redirectUrl(formData)
-                })
-            })
-
+            
             function redirectUrl(form){
                 let redirectUrl = new URL('it/verificar.html')
 
@@ -466,7 +435,7 @@
 							<p>Il finanziamento di cui hai bisogno, come ne hai bisogno. Ti offriamo il prestito più adatto alla tua situazione. Scegli il motivo e la quantità e realizza il tuo progetto.</p>
 						</div>
 						<div class="enlace">
-							<a class="stretched-link" href="it/richiedi-il-tuo-prestito.html">Richiedi il tuo prestito ></a>
+							<a class="stretched-link" href="#form-banner">Richiedi il tuo prestito ></a>
 						</div>
 					</div>
 				</div>
@@ -480,7 +449,7 @@
 							<p>Riduci le tue spese mensili e migliora le condizioni dei tuoi prestiti in corso con questo prodotto. Controlla subito tutte le opzioni!</p>
 						</div>
 						<div class="enlace">
-							<a class="stretched-link" href="it/richiedi-il-tuo-prestito.html">Richiedi il tuo prestito ></a>
+							<a class="stretched-link" href="#form-banner">Richiedi il tuo prestito ></a>
 						</div>
 					</div>
 				</div>
@@ -494,7 +463,7 @@
 							<p>Finanzia tutte le spese urgenti che possono sorgere in modo agile e veloce. A volte si verificano eventi imprevisti che richiedono liquidità immediata.</p>
 						</div>
 						<div class="enlace">
-							<a class="stretched-link" href="it/richiedi-il-tuo-prestito.html">Richiedi il tuo prestito ></a>
+							<a class="stretched-link" href="#form-banner">Richiedi il tuo prestito ></a>
 						</div>
 					</div>
 				</div>
@@ -510,7 +479,7 @@
 							<p>A volte i costi di una laurea o di un master sono un ostacolo quando si tratta di iniziare. Scopri le opzioni di finanziamento per gli studenti e ottieni il tuo, è così facile!</p>
 						</div>
 						<div class="enlace">
-							<a class="stretched-link" href="it/richiedi-il-tuo-prestito.html">Richiedi il tuo prestito ></a>
+							<a class="stretched-link" href="#form-banner">Richiedi il tuo prestito ></a>
 						</div>
 					</div>
 				</div>
@@ -523,7 +492,7 @@
 						<div class="text-card">
 							<p>Hai bisogno di una vacanza? Finanzia il viaggio dei tuoi sogni, disconnettiti, viaggia in quel posto che stai guardando da tanto tempo e non preoccuparti di nient&#039;altro.</p>
 							<div class="enlace">
-								<a class="stretched-link" href="it/richiedi-il-tuo-prestito.html">Richiedi il tuo prestito ></a>
+								<a class="stretched-link" href="#form-banner">Richiedi il tuo prestito ></a>
 							</div>
 						</div>
 					</div>
@@ -538,7 +507,7 @@
 							<p>Copri le tue spese e disponi di denaro con un importo da € 200 a € 75.000 che soddisfa le tue esigenze. Veloce, sicuro e molto altro.</p>
 						</div>
 						<div class="enlace">
-							<a class="stretched-link" href="it/richiedi-il-tuo-prestito.html">Richiedi il tuo prestito ></a>
+							<a class="stretched-link" href="#form-banner">Richiedi il tuo prestito ></a>
 						</div>
 					</div>
 				</div>
@@ -606,7 +575,7 @@ f(a.title)+"&t="+(new Date).getTime()+(m?"&uw=no":""),h.parentNode.insertBefore(
 
         <div class="col mb-3">
             <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a href="it/richiedi-il-tuo-prestito.html" class="nav-link p-0 text-muted">richiedi il tuo prestito</a></li>
+                <li class="nav-item mb-2"><a href="it.html#form-banner" class="nav-link p-0 text-muted">richiedi il tuo prestito</a></li>
                 
                                     <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="it/creditio-card.html">Carte di credito</a></li>
                 
@@ -615,7 +584,7 @@ f(a.title)+"&t="+(new Date).getTime()+(m?"&uw=no":""),h.parentNode.insertBefore(
  
         <div class="col mb-3">
             <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a target="_blank" class="nav-link p-0 text-muted" href="https://partners.witme.es/affiliate/signup" class="nav-link p-0 text-muted">Affiliate Program</a></li>
+                <!-- <li class="nav-item mb-2"><a target="_blank" class="nav-link p-0 text-muted" href="https://partners.witme.es/affiliate/signup" class="nav-link p-0 text-muted">Affiliate Program</a></li> -->
                                 <li class="nav-item mb-2"><a target="_blank" class="nav-link p-0 text-muted" href="it/politica-sulla-riservatezza.html">Politica sulla riservatezza</a></li>
                 <li class="nav-item mb-2"><a target="_blank" class="nav-link p-0 text-muted" href="it/politica-de-cookies.html">Cookie Policy</a></li>
                 <li class="nav-item mb-2"><a target="_blank" class="nav-link p-0 text-muted" href="it/aviso-legal.html">Avviso legale</a></li>

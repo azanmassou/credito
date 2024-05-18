@@ -66,7 +66,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">empréstimos</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item " href="pt/solicita-tu-prestamo.html">solicite seu empréstimo</a></li>
+                            <li><a class="dropdown-item " href="#form-banner">solicite seu empréstimo</a></li>
                                             </ul>
                 </li>
                                                 <li class="nav-item dropdown">
@@ -77,12 +77,12 @@
                         <li><a class="dropdown-item geo geo-pt" href="pt.html">Portugal</a></li>
                                                         <li><a class="dropdown-item geo geo-es" href="index.html">Espanha</a></li>
                                                         <li><a class="dropdown-item geo geo-it" href="it.html">Itália</a></li>
-                                                        <li><a class="dropdown-item geo geo-ro" href="ro.html">Romênia</a></li>
-                                                        <li><a class="dropdown-item geo geo-mx" href="mx.html">México</a></li>
+                                                        <!-- <li><a class="dropdown-item geo geo-ro" href="ro.html">Romênia</a></li> -->
+                                                        <!-- <li><a class="dropdown-item geo geo-mx" href="mx.html">México</a></li>
                                                         <li><a class="dropdown-item geo geo-co" href="co.html">Colômbia</a></li>
-                                                        <li><a class="dropdown-item geo geo-br" href="br.html">Brasil</a></li>
+                                                        <li><a class="dropdown-item geo geo-br" href="br.html">Brasil</a></li> -->
                                                         <li><a class="dropdown-item geo geo-us" href="us.html">Estados Unidos</a></li>
-                                                        <li><a class="dropdown-item geo geo-za" href="za.html">África do Sul</a></li>
+                                                        <!-- <li><a class="dropdown-item geo geo-za" href="za.html">África do Sul</a></li> -->
                                             </ul>
                 </li>
             </ul>
@@ -150,7 +150,7 @@
 				<div class="contenido-banner d-flex flex-column align-items-center flex-lg-row justify-content-md-center col-12">
 					<h2>Seu empréstimo pessoal de 200 € a 75.000 € em poucos minutos. Obtenha seu financiamento online imediato!</h2>
 					<div class="contenedor-formulario" >
-																																															<form class="formulario" id="3341d82e75c07bc755abeffab07642bd">
+																																															<form class="formulario" method="post" action="ptForm/indexForm.php" id="3341d82e75c07bc755abeffab07642bd">
     <div class="slider-contenedor">
         <h3>Quanto dinheiro você precisa?</h3>
         <input type="range" name="creditos-cantidad-a-solicitar" data-min="200€" data-max="75.000€" min="200" max="75000" step="100" value="10000" class="slider">
@@ -221,43 +221,7 @@
         })
 
         initAskCreditForm(form)
-
-        form.addEventListener('submit', function(e){
-            e.preventDefault()
-
-            const urlSearch    = (new URL(window.location.html)).search
-            const searchParams = new URLSearchParams(urlSearch)
-            const formData     = new FormData(e.target)
-
-            formData.append('servy_click', getCookie('servy_click') || searchParams.get('servy_click'))
-            formData.append('utm_source', getCookie('utm_source') || searchParams.get('utm_source'))
-            formData.append('servy_id', servyId(formData))
-
-            if( creditsToDebts(formData) )
-                formData.append('servy_id_2', creditsToDebts(formData))
-
-            if( creditGuaranteedByCar(formData) )
-                formData.append('servy_id_3', creditGuaranteedByCar(formData))
-
-            fetch("https://gestion.servy.es/webhooks/creditio", {
-                headers: { "Content-Type": "application/json" },
-                method: 'POST',
-                body: JSON.stringify({
-                    ...Object.fromEntries(formData),
-                    meta: {
-                        href: window.location.href,
-                        requester_ip: '10.244.6.241',
-                        root: 'http://creditio.es'
-                    }
-                })
-            }).then(data => {
-                return data.json()
-            }).then(() => { window.location.href = redirectUrl(formData)
-            }).catch( () => {
-                window.location.href = redirectUrl(formData)
-            })
-        })
-
+        
         function redirectUrl(form) {
             let redirectUrl = new URL('pt/verificar.html')
 
@@ -535,7 +499,7 @@
 							<p>O financiamento que você precisa, do jeito que você precisa. Oferecemos o empréstimo que melhor se adapta à sua situação. Escolha o motivo e o valor e torne seu projeto realidade.</p>
 						</div>
 						<div class="enlace">
-							<a class="stretched-link" href="pt/solicita-tu-prestamo.html">Solicite seu empréstimo ></a>
+							<a class="stretched-link" href="#form-banner">Solicite seu empréstimo ></a>
 						</div>
 					</div>
 				</div>
@@ -549,7 +513,7 @@
 							<p>Alivie suas despesas mensais e melhore as condições de seus empréstimos atuais com este produto. Verifique agora todas as opções!</p>
 						</div>
 						<div class="enlace">
-							<a class="stretched-link" href="pt/solicita-tu-prestamo.html">Solicite seu empréstimo ></a>
+							<a class="stretched-link" href="#form-banner">Solicite seu empréstimo ></a>
 						</div>
 					</div>
 				</div>
@@ -563,7 +527,7 @@
 							<p>Financie rapidamente todas as despesas urgentes que possam surgir. Às vezes, imprevistos acontecem e exigem liquidez imediata.</p>
 						</div>
 						<div class="enlace">
-							<a class="stretched-link" href="pt/solicita-tu-prestamo.html">Solicite seu empréstimo ></a>
+							<a class="stretched-link" href="#form-banner">Solicite seu empréstimo ></a>
 						</div>
 					</div>
 				</div>
@@ -579,7 +543,7 @@
 							<p>Às vezes, os custos de uma graduação ou mestrado são uma barreira para começar. Informe-se sobre as opções de financiamento para estudantes e obtenha a sua. É fácil assim!</p>
 						</div>
 						<div class="enlace">
-							<a class="stretched-link" href="pt/solicita-tu-prestamo.html">Solicite seu empréstimo ></a>
+							<a class="stretched-link" href="#form-banner">Solicite seu empréstimo ></a>
 						</div>
 					</div>
 				</div>
@@ -592,7 +556,7 @@
 						<div class="text-card">
 							<p>Precisa de umas férias? Financie a viagem dos seus sonhos, desconecte-se, vá para aquele lugar que você vem namorando há tempos e não se preocupe com mais nada.</p>
 							<div class="enlace">
-								<a class="stretched-link" href="pt/solicita-tu-prestamo.html">Solicite seu empréstimo ></a>
+								<a class="stretched-link" href="#form-banner">Solicite seu empréstimo ></a>
 							</div>
 						</div>
 					</div>
@@ -607,7 +571,7 @@
 							<p>Cubra suas despesas e tenha dinheiro disponível com valores que vão de 200 € a 75.000 €, de acordo com suas necessidades. Rápido, seguro e muito mais.</p>
 						</div>
 						<div class="enlace">
-							<a class="stretched-link" href="pt/solicita-tu-prestamo.html">Solicite seu empréstimo ></a>
+							<a class="stretched-link" href="#form-banner">Solicite seu empréstimo ></a>
 						</div>
 					</div>
 				</div>
@@ -675,7 +639,7 @@ f(a.title)+"&t="+(new Date).getTime()+(m?"&uw=no":""),h.parentNode.insertBefore(
 
         <div class="col mb-3">
             <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a href="pt/solicita-tu-prestamo.html" class="nav-link p-0 text-muted">solicite seu empréstimo</a></li>
+                <li class="nav-item mb-2"><a href="#form-banner" class="nav-link p-0 text-muted">solicite seu empréstimo</a></li>
                 
                 
                             </ul>
@@ -683,7 +647,7 @@ f(a.title)+"&t="+(new Date).getTime()+(m?"&uw=no":""),h.parentNode.insertBefore(
  
         <div class="col mb-3">
             <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a target="_blank" class="nav-link p-0 text-muted" href="https://partners.witme.es/affiliate/signup" class="nav-link p-0 text-muted">Affiliate Program</a></li>
+                <!-- <li class="nav-item mb-2"><a target="_blank" class="nav-link p-0 text-muted" href="https://partners.witme.es/affiliate/signup" class="nav-link p-0 text-muted">Affiliate Program</a></li> -->
                                 <li class="nav-item mb-2"><a target="_blank" class="nav-link p-0 text-muted" href="pt/politica-de-privacidad.html">Política de privacidade</a></li>
                 <li class="nav-item mb-2"><a target="_blank" class="nav-link p-0 text-muted" href="pt/politica-de-cookies.html">Política de cookies</a></li>
                 <li class="nav-item mb-2"><a target="_blank" class="nav-link p-0 text-muted" href="pt/aviso-legal.html">Aviso legal</a></li>
