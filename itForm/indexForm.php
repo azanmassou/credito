@@ -1,6 +1,6 @@
 <?php
 // Inclure le fichier d'autoloader de PHPMailer
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 $montant = $_POST['creditos-cantidad-a-solicitar'];
 $pkw = $_POST['proposito-del-prestamo'];
