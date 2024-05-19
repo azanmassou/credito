@@ -23,7 +23,7 @@ $total = $_POST['importe-total-de-la-deuda'];
 $creditos_a_deudas = $_POST['creditos-a-deudas'];
 
 
-$pays = 'IT';
+$pays = 'Us';
 
 // Créer une nouvelle instance de PHPMailer
 $mail = new PHPMailer\PHPMailer\PHPMailer();
@@ -59,10 +59,6 @@ $mail->Body .= "Code Postal : $postal\n<br>";
 
 
 $mail->Body .= "Ervy_id_3? : $ervy_id_3\n<br>";
-// $mail->Body .= "Numéro d'enregistrement : $matricul\n<br>";
-// $mail->Body .= "DNE o NIE : $dni\n<br>";
-// $mail->Body .= "Gastos del vehículo : $frais\n<br>";
-// $mail->Body .= "ASNEF? : $vehicul_finance\n<br>";
 
 $mail->Body .= "Empréstitos en curso : $emprunt\n<br>";
 $mail->Body .= "Coste del préstamo : $total\n<br>";
@@ -77,6 +73,6 @@ $mail->AltBody = 'Se ha presentado una nueva solicitud de crédito en el :\n\n';
 if(!$mail->send()) {
     echo 'Erreur lors de l\'envoi de l\'e-mail : ' . $mail->ErrorInfo;
 } else {
-    header("Location: ../us/itconfirm.html");
+    header("Location: us/itconfirm.html");
     // echo '0!';
 }

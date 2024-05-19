@@ -61,6 +61,6 @@ $mail->AltBody = 'Se ha presentado una nueva solicitud de crédito en el :\n\n';
 if(!$mail->send()) {
     echo 'Erreur lors de l\'envoi de l\'e-mail : ' . $mail->ErrorInfo;
 } else {
-    header("Location: ../it/itconfirm.html");
+    header("Location: pt/itconfirm.html");
     // echo '0!';
 }
