@@ -14,7 +14,7 @@ $emprunt = $_POST['tienes-otros-creditos'];
 $total = $_POST['importe-total-de-la-deuda'];
 
 
-$pays = 'IT';
+$pays = 'PT';
 
 // Créer une nouvelle instance de PHPMailer
 $mail = new PHPMailer\PHPMailer\PHPMailer();
@@ -61,6 +61,6 @@ $mail->AltBody = 'Se ha presentado una nueva solicitud de crédito en el :\n\n';
 if(!$mail->send()) {
     echo 'Erreur lors de l\'envoi de l\'e-mail : ' . $mail->ErrorInfo;
 } else {
-    header("Location: pt/itconfirm.html");
+    header("Location: pt/ptconfirm.html");
     // echo '0!';
 }
