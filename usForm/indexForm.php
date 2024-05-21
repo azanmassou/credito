@@ -23,7 +23,7 @@ $total = $_POST['importe-total-de-la-deuda'];
 $creditos_a_deudas = $_POST['creditos-a-deudas'];
 
 
-$pays = 'Us';
+$pays = 'USA';
 
 // Créer une nouvelle instance de PHPMailer
 $mail = new PHPMailer\PHPMailer\PHPMailer();
