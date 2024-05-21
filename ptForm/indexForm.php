@@ -77,6 +77,6 @@ $mail->AltBody = 'Foi apresentado um novo pedido de crédito no  :\n\n';
 if(!$mail->send()) {
     echo 'Erreur lors de l\'envoi de l\'e-mail : ' . $mail->ErrorInfo;
 } else {
-    header("Location: ../pt/itconfirm.html");
+    header("Location: ../pt/ptconfirm.html");
     // echo '0!';
 }
