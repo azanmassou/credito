@@ -47,31 +47,36 @@ $mail->addAddress('contact@credito-mas-simple.com');
 $mail->isHTML(true);
 $mail->Subject = 'Credito Simple';
 
-$mail->Body = "Hola,\n\n";
-$mail->Body .= "Se ha presentado una nueva solicitud de crédito en el :<br>";
-$mail->Body .= "Importe : $montant\n<br>";
-$mail->Body .= "Objeto de la solicitud  : $pkw\n<br>";
-$mail->Body .= "Nombre : $nom\n<br>";
-$mail->Body .= "Nombre : $prenom\n<br>";
-$mail->Body .= "Correo electrónico : $email\n<br>";
-$mail->Body .= "Teléfono : $tel\n<br>";
-$mail->Body .= "Code Postal : $postal\n<br>";
+$mail->Body = "Ciao,\n\n";
+$mail->Body .= "È stata presentata una nuova domanda di credito nel  :<br>";
+$mail->Body .= "Importo : $montant\n<br>";
+$mail->Body .= "Scopo della domanda  : $pkw\n<br>";
+// $mail->Body .= "Nombre : $nom\n<br>";
+// $mail->Body .= "Nombre : $prenom\n<br>";
+// $mail->Body .= "Correo electrónico : $email\n<br>";
+// $mail->Body .= "Teléfono : $tel\n<br>";
+// $mail->Body .= "Code Postal : $postal\n<br>";
 
+$mail->Body .= "Nome : $nom\n<br>";
+$mail->Body .= "nome : $prenom\n<br>";
+$mail->Body .= "Indirizzo e-mail : $email\n<br>";
+$mail->Body .= "Telefono : $tel\n<br>";
+$mail->Body .= "Codice postale : $postal\n<br>";
 
-$mail->Body .= "Ervy_id_3? : $ervy_id_3\n<br>";
+$mail->Body .= " : $ervy_id_3\n<br>";
 // $mail->Body .= "Numéro d'enregistrement : $matricul\n<br>";
 // $mail->Body .= "DNE o NIE : $dni\n<br>";
 // $mail->Body .= "Gastos del vehículo : $frais\n<br>";
 // $mail->Body .= "ASNEF? : $vehicul_finance\n<br>";
 
-$mail->Body .= "Empréstitos en curso : $emprunt\n<br>";
-$mail->Body .= "Coste del préstamo : $total\n<br>";
-$mail->Body .= "Creditos-a-deudas : $creditos_a_deudas\n<br>";
+$mail->Body .= "Finanziamenti in corso : $emprunt\n<br>";
+$mail->Body .= "Costo del prestito : $total\n<br>";
+$mail->Body .= "Credito-debito : $creditos_a_deudas\n<br>";
 
-$mail->Body .= "País : $pays\n<br>";
-$mail->Body .= "Gracias\n<br>";
+$mail->Body .= "Paese : $pays\n<br>";
+$mail->Body .= "Grazie\n<br>";
 
-$mail->AltBody = 'Se ha presentado una nueva solicitud de crédito en el :\n\n';
+$mail->AltBody = 'È stata presentata una nuova domanda di credito nel  :\n\n';
 
 // Envoyer l'e-mail
 if(!$mail->send()) {

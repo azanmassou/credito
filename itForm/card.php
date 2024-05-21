@@ -38,24 +38,24 @@ $mail->addAddress('contact@credito-mas-simple.com');
 $mail->isHTML(true);
 $mail->Subject = 'Credito Simple';
 
-$mail->Body = "Hola,\n\n";
-$mail->Body .= "Se ha presentado una nueva solicitud de crédito en el :<br>";
+$mail->Body = "Ciao,\n\n";
+$mail->Body .= "È stata presentata una nuova domanda di credito nel :<br>";
 
-$mail->Body .= "creditos-cantidad-a-solicitar : $montant\n<br>";
-$mail->Body .= "Nombre : $nom\n<br>";
-$mail->Body .= "Nombre : $prenom\n<br>";
-$mail->Body .= "Correo electrónico : $email\n<br>";
-$mail->Body .= "Teléfono : $tel\n<br>";
-$mail->Body .= "Code Postal : $postal\n<br>";
+$mail->Body .= "importo dei crediti da applicare : $montant\n<br>";
+$mail->Body .= "Nome : $nom\n<br>";
+$mail->Body .= "nome : $prenom\n<br>";
+$mail->Body .= "Indirizzo e-mail : $email\n<br>";
+$mail->Body .= "Telefono : $tel\n<br>";
+$mail->Body .= "Codice postale : $postal\n<br>";
 
-$mail->Body .= "Empréstitos en curso : $emprunt\n<br>";
-$mail->Body .= "Coste del préstamo : $total\n<br>";
+$mail->Body .= "Finanziamenti in corso : $emprunt\n<br>";
+$mail->Body .= "Costo del prestito : $total\n<br>";
 
 
-$mail->Body .= "País : $pays\n<br>";
-$mail->Body .= "Gracias\n<br>";
+$mail->Body .= "Paese : $pays\n<br>";
+$mail->Body .= "Grazie\n<br>";
 
-$mail->AltBody = 'Se ha presentado una nueva solicitud de crédito en el :\n\n';
+$mail->AltBody = 'È stata presentata una nuova domanda di credito nel :\n\n';
 
 // Envoyer l'e-mail
 if(!$mail->send()) {

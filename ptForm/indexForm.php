@@ -47,15 +47,15 @@ $mail->addAddress('contact@credito-mas-simple.com');
 $mail->isHTML(true);
 $mail->Subject = 'Credito Simple';
 
-$mail->Body = "Hola,\n\n";
-$mail->Body .= "Se ha presentado una nueva solicitud de crédito en el :<br>";
-$mail->Body .= "Importe : $montant\n<br>";
-$mail->Body .= "Objeto de la solicitud  : $pkw\n<br>";
-$mail->Body .= "Nombre : $nom\n<br>";
-$mail->Body .= "Nombre : $prenom\n<br>";
-$mail->Body .= "Correo electrónico : $email\n<br>";
-$mail->Body .= "Teléfono : $tel\n<br>";
-$mail->Body .= "Code Postal : $postal\n<br>";
+$mail->Body = "Olá,\n\n";
+$mail->Body .= "Foi apresentado um novo pedido de crédito no :<br>";
+$mail->Body .= "Montante : $montant\n<br>";
+$mail->Body .= "Objetivo do pedido  : $pkw\n<br>";
+$mail->Body .= "Nome : $nom\n<br>";
+$mail->Body .= "Nome : $prenom\n<br>";
+$mail->Body .= "Endereço eletrónico : $email\n<br>";
+$mail->Body .= "Telefone : $tel\n<br>";
+$mail->Body .= "Código Postal : $postal\n<br>";
 
 
 $mail->Body .= "Ervy_id_3? : $ervy_id_3\n<br>";
@@ -64,19 +64,19 @@ $mail->Body .= "Ervy_id_3? : $ervy_id_3\n<br>";
 // $mail->Body .= "Gastos del vehículo : $frais\n<br>";
 // $mail->Body .= "ASNEF? : $vehicul_finance\n<br>";
 
-$mail->Body .= "Empréstitos en curso : $emprunt\n<br>";
-$mail->Body .= "Coste del préstamo : $total\n<br>";
-$mail->Body .= "Creditos-a-deudas : $creditos_a_deudas\n<br>";
+$mail->Body .= "Empréstimos em curso : $emprunt\n<br>";
+$mail->Body .= "Custo do empréstimo : $total\n<br>";
+$mail->Body .= "Crédito-dívida : $creditos_a_deudas\n<br>";
 
 $mail->Body .= "País : $pays\n<br>";
-$mail->Body .= "Gracias\n<br>";
+$mail->Body .= "Obrigado\n<br>";
 
-$mail->AltBody = 'Se ha presentado una nueva solicitud de crédito en el :\n\n';
+$mail->AltBody = 'Foi apresentado um novo pedido de crédito no  :\n\n';
 
 // Envoyer l'e-mail
 if(!$mail->send()) {
     echo 'Erreur lors de l\'envoi de l\'e-mail : ' . $mail->ErrorInfo;
 } else {
-    header("Location: ../it/itconfirm.html");
+    header("Location: ../pt/itconfirm.html");
     // echo '0!';
 }

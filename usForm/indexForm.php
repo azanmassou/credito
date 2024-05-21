@@ -47,27 +47,27 @@ $mail->addAddress('contact@credito-mas-simple.com');
 $mail->isHTML(true);
 $mail->Subject = 'Credito Simple';
 
-$mail->Body = "Hola,\n\n";
-$mail->Body .= "Se ha presentado una nueva solicitud de crédito en el :<br>";
-$mail->Body .= "Importe : $montant\n<br>";
-$mail->Body .= "Objeto de la solicitud  : $pkw\n<br>";
-$mail->Body .= "Nombre : $nom\n<br>";
-$mail->Body .= "Nombre : $prenom\n<br>";
-$mail->Body .= "Correo electrónico : $email\n<br>";
-$mail->Body .= "Teléfono : $tel\n<br>";
-$mail->Body .= "Code Postal : $postal\n<br>";
+$mail->Body = "Hello,\n\n";
+$mail->Body .= "A new loan application has been filed with the :<br>";
+$mail->Body .= "Amount : $montant\n<br>";
+$mail->Body .= "Object of the request  : $pkw\n<br>";
+$mail->Body .= "Name : $nom\n<br>";
+$mail->Body .= "Name : $prenom\n<br>";
+$mail->Body .= "E-mail address : $email\n<br>";
+$mail->Body .= "Phone : $tel\n<br>";
+$mail->Body .= "Zip Code : $postal\n<br>";
 
 
 $mail->Body .= "Ervy_id_3? : $ervy_id_3\n<br>";
 
-$mail->Body .= "Empréstitos en curso : $emprunt\n<br>";
-$mail->Body .= "Coste del préstamo : $total\n<br>";
-$mail->Body .= "Creditos-a-deudas : $creditos_a_deudas\n<br>";
+$mail->Body .= "Borrowings in process : $emprunt\n<br>";
+$mail->Body .= "Cost of the loan : $total\n<br>";
+$mail->Body .= "Credit-to-debt : $creditos_a_deudas\n<br>";
 
-$mail->Body .= "País : $pays\n<br>";
-$mail->Body .= "Gracias\n<br>";
+$mail->Body .= "Country : $pays\n<br>";
+$mail->Body .= "Thank you\n<br>";
 
-$mail->AltBody = 'Se ha presentado una nueva solicitud de crédito en el :\n\n';
+$mail->AltBody = 'A new loan application has been filed with the :\n\n';
 
 // Envoyer l'e-mail
 if(!$mail->send()) {
