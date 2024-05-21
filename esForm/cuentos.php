@@ -22,7 +22,7 @@ $postal = $_POST['codigo-postal'];
 // $total = $_POST['importe-total-de-la-deuda'];
 
 
-$pays = 'España';
+$pays = 'ES';
 
 
 // $pays = $_POST['country'];

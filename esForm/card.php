@@ -25,7 +25,7 @@ $ingresos = $_POST['ingresos-mensuales'];
 $porcentaje = $_POST['porcentaje-de-ingresos-destinas-a-tus-deudas'];
 $fuente = $_POST['fuente-principal-de-ingreso'];
 
-$pays = 'España';
+$pays = 'ES';
 
 // Créer une nouvelle instance de PHPMailer
 $mail = new PHPMailer\PHPMailer\PHPMailer();
