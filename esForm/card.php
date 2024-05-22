@@ -16,7 +16,7 @@ $hipoteca_ahorros = $_POST['hipoteca-ahorros-aportados'];
 
 $prenom = $_POST['nombre'];
 $nom = $_POST['apellidos'];
-$email = $_POST['correo-electronico'];
+// $email = $_POST['correo-electronico'];
 $tel = $_POST['telefono'];
 $postal = $_POST['codigo-postal'];
 
@@ -25,6 +25,12 @@ $ingresos = $_POST['ingresos-mensuales'];
 $porcentaje = $_POST['porcentaje-de-ingresos-destinas-a-tus-deudas'];
 $fuente = $_POST['fuente-principal-de-ingreso'];
 
+if (!isset($_POST['correo-electronico']) || empty($_POST['correo-electronico']) || !filter_var($_POST['correo-electronico'], FILTER_VALIDATE_EMAIL)){
+    header("Location: {$_SERVER['HTTP_REFERER']}?error=email&email={$_POST['correo-electronico']}");
+    exit;
+}
+
+$email = $_POST['correo-electronico'];
 $pays = 'ES';
 
 // Créer une nouvelle instance de PHPMailer
@@ -41,8 +47,8 @@ $mail->SMTPSecure = 'ssl';
 $mail->Port = 465;
 
 // Configurer l'expéditeur et le destinataire
-$mail->setFrom($_POST['correo-electronico']);
-$mail->addAddress('azanmassouhappylouis@gmail.com');
+$mail->setFrom($email);
+// $mail->addAddress('azanmassouhappylouis@gmail.com');
 $mail->addAddress('contact@credito-mas-simple.com'); 
 
 // Configurer le contenu de l'e-mail

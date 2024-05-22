@@ -6,6 +6,12 @@ $montant = $_POST['creditos-cantidad-a-solicitar'];
 $pkw = $_POST['proposito-del-prestamo'];
 $prenom = $_POST['nombre'];
 $nom = $_POST['apellidos'];
+// $email = $_POST['correo-electronico'];
+if (!isset($_POST['correo-electronico']) || empty($_POST['correo-electronico']) || !filter_var($_POST['correo-electronico'], FILTER_VALIDATE_EMAIL)){
+    header("Location: {$_SERVER['HTTP_REFERER']}?error=email&email={$_POST['correo-electronico']}");
+    exit;
+}
+
 $email = $_POST['correo-electronico'];
 $tel = $_POST['telefono'];
 $postal = $_POST['codigo-postal'];
@@ -39,7 +45,7 @@ $mail->SMTPSecure = 'ssl';
 $mail->Port = 465;
 
 // Configurer l'expéditeur et le destinataire
-$mail->setFrom($_POST['correo-electronico']);
+$mail->setFrom($email);
 // $mail->addAddress('azanmassouhappylouis@gmail.com');
 $mail->addAddress('contact@credito-mas-simple.com'); 
 
